@@ -1,3 +1,4 @@
+/*jslint unparam : true*/
 /*global todomvc, angular  */
 
 

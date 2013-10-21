@@ -1,4 +1,4 @@
-/*global todomvc, angular  */
+/*global angular  */
 
 /**
  * The main TodoMVC app module.
@@ -17,6 +17,5 @@ todomvc.run(function ($rootScope) {
     "use strict";
     $rootScope.serverUrl = 'https://baas.kinvey.com';
     $rootScope.key = 'kid_eeX0cTJoBf';
-    $rootScope.collectionName = 'todo-mvc';
-
+    $rootScope.collectionName = 'todomvc';
 });

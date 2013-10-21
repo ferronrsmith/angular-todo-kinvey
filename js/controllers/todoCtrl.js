@@ -14,7 +14,7 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $log, todoSt
         $scope.todos = data;
         todos = data;
         $scope.newTodo = "";
-        $scope.remainingCount = filterFilter(data, {completed: false}).length;
+        $scope.remainingCount = data.length - filterFilter(data, {completed: true}).length;
         $scope.editedTodo = null;
 
         if ($location.path() === '') {

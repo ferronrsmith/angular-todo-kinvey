@@ -5,16 +5,12 @@ describe('Todo Webapp Kinvey Test Controller', function () {
     "use strict";
 
     beforeEach(module('todomvc'));
+    beforeEach(module('ngRoute'));
 
-    var TodoCtrl, scope, $httpBackend, todols, $headers;
+    var scope, $httpBackend, todols;
 
     beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
         $httpBackend =  _$httpBackend_;
-        $headers = {
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest',
-            Authorization : 'Basic a2lkX2VlWDBjVEpvQmY6N2IzOTc1ZWNiODhhNDNlYzk5OGUzMWJiNjcwMjIyODI='
-        };
 
         todols = [
             {
@@ -42,18 +38,18 @@ describe('Todo Webapp Kinvey Test Controller', function () {
             }
         ];
 
-        $httpBackend.whenGET('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todo_mvc').respond(todols);
-        $httpBackend.whenDELETE('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todo_mvc/50feaec65b32762404000516').respond(todols[0]);
-        $httpBackend.whenDELETE('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todo_mvc/50fed0515b327624040005fb').respond(todols[1]);
-        $httpBackend.whenPUT('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todo_mvc/50fed0515b327624040005fb').respond(todols[1]);
-        $httpBackend.whenPUT('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todo_mvc/50feaec65b32762404000516').respond(todols[0]);
-        $httpBackend.whenPOST('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todo_mvc', {
+        $httpBackend.whenGET('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todomvc').respond(todols);
+        $httpBackend.whenDELETE('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todomvc/50feaec65b32762404000516').respond(todols[0]);
+        $httpBackend.whenDELETE('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todomvc/50fed0515b327624040005fb').respond(todols[1]);
+        $httpBackend.whenPUT('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todomvc/50fed0515b327624040005fb').respond(todols[1]);
+        $httpBackend.whenPUT('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todomvc/50feaec65b32762404000516').respond(todols[0]);
+        $httpBackend.whenPOST('https://baas.kinvey.com/appdata/kid_eeX0cTJoBf/todomvc', {
             "title" : "something there",
             "completed": false
         }).respond(todols[1]);
 
         scope = $rootScope.$new();
-        TodoCtrl = $controller('TodoCtrl', {
+        $controller('TodoCtrl', {
             $scope : scope
         });
     }));

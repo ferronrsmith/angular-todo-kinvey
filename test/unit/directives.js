@@ -82,7 +82,7 @@ describe('ngEvents Unit Test', function () {
 
 });
 
-describe('ngValidate Unit Test', function ($compile) {
+describe('ngValidate Unit Test', function () {
     "use strict";
     var scope, compileAndDigest, trueValidator, falseValidator, passedValueValidator;
 
@@ -240,7 +240,8 @@ describe('ngValidate Unit Test', function ($compile) {
         it('should fail if ngModel not present', inject(function () {
             expect(function () {
                 compileAndDigest('<input name="input" ng-validate="\'validate($value)\'">', scope);
-            }).toThrow(new Error('No controller: ngModel'));
+            }).toThrow(new Error("[$compile:ctreq] Controller 'ngModel', required by directive 'ngValidate', can't be found!\n" +
+                    "http://errors.angularjs.org/1.2.0-rc.3/$compile/ctreq?p0=ngModel&p1=ngValidate"));
         }));
         it('should have no effect if validate expression is empty', inject(function () {
             compileAndDigest('<input ng-model="value" ng-validate="">', scope);
