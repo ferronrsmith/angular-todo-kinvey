@@ -23,9 +23,11 @@ todomvc.directive('ngEvent', ['$parse',
                     var params = Array.prototype.slice.call(arguments);
                     //Take out first parameter (event object);
                     params = params.splice(1);
-                    scope.$apply(function () {
-                        fn(scope, {$event: evt, $params: params});
-                    });
+                    fn(scope, {$event: evt, $params: params});
+                    // check if if there is something to digest
+                    if (!scope.$$phase) {
+                        scope.$apply();
+                    }
                 });
             });
         };
